@@ -2,6 +2,8 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:elective3project/models/booking.dart';
 
+// new tab added for summary of flights - Nov. 12, 2025
+
 class SummaryFlightsTab extends StatelessWidget {
   final List<Booking> bookedFlights;
   final Function() onRefresh;
@@ -23,14 +25,14 @@ class SummaryFlightsTab extends StatelessWidget {
     final now = DateTime.now();
     final normalizedNow = DateTime(now.year, now.month, now.day);
 
-    // Filter only past or current flights
+    
     final filteredFlights = bookedFlights.where((booking) {
       final dep = DateTime(booking.departureDate.year, booking.departureDate.month, booking.departureDate.day);
       final ret = booking.returnDate != null
           ? DateTime(booking.returnDate!.year, booking.returnDate!.month, booking.returnDate!.day)
           : null;
 
-      // Include flight if it has already started or finished
+     
       return dep.isBefore(normalizedNow) ||
              dep.isAtSameMomentAs(normalizedNow) ||
              (ret != null && (ret.isBefore(normalizedNow) || ret.isAtSameMomentAs(normalizedNow)));
@@ -50,7 +52,6 @@ class SummaryFlightsTab extends StatelessWidget {
         final departureDetails = json.decode(booking.departureFlightDetails);
         final departureTime = departureDetails['departureTime'] ?? 'N/A';
 
-        // Determine flight status based on date
         String flightStatus;
         final dep = booking.departureDate;
         final ret = booking.returnDate;
@@ -65,7 +66,6 @@ class SummaryFlightsTab extends StatelessWidget {
           flightStatus = 'Confirmed';
         }
 
-        // Color based on status
         Color chipColor;
         switch (flightStatus) {
           case 'Completed':

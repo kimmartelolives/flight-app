@@ -185,7 +185,7 @@ class _HomeScreenState extends State<HomeScreen> {
       BookingTab(initialDestination: _initialDestination),
       const SchedulesTab(),
       BookedFlightsTab(bookedFlights: _bookedFlights, onRefresh: _loadBookings),
-      SummaryFlightsTab(bookedFlights: _bookedFlights, onRefresh: _loadBookings),
+      SummaryFlightsTab(bookedFlights: _bookedFlights, onRefresh: _loadBookings), //added new tab for summary of flights - Nov. 12, 2025
       _profileTab,
     ];
 
@@ -212,7 +212,7 @@ class _HomeScreenState extends State<HomeScreen> {
           BottomNavigationBarItem(icon: Icon(Icons.flight), label: 'Book Flight'),
           BottomNavigationBarItem(icon: Icon(Icons.schedule), label: 'Schedules'),
           BottomNavigationBarItem(icon: Icon(Icons.bookmark), label: 'My Bookings'),
-          BottomNavigationBarItem(icon: Icon(Icons.book), label: 'Summary Flights'),
+          BottomNavigationBarItem(icon: Icon(Icons.book), label: 'Summary Flights'), //added new buttons for summary of flights - Nov. 12, 2025
           BottomNavigationBarItem(icon: Icon(Icons.person), label: 'Profile'),
           
         ],
